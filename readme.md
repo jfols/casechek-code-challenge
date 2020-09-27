@@ -14,32 +14,24 @@ Github Followers - https://developer.github.com/v3/users/followers/
 
 Quote Garden - https://pprathameshmore.github.io/QuoteGarden/
 
-Requirements
+## Requirements
 
 - Use a modern, enterprise-level JS front-end framework (Angular 9+, React, etc).
 - Use a precompiled CSS language like SASS / Less etc.
-
 - Use a build system to bundle / minify code for production deployment.
+- Transform some part of the data received from the chosen API to prepare it for display.
+- Code must live in a Github repo with a README.md that describes how to serve the app locally.
+- Write at least one unit test and one e2e test.
 
-  Transform some part of the data received from the chosen API to prepare it for display.
+## Bonus
 
-  Code must live in a Github repo with a README.md that describes how to serve the app locally.
+- More tests!
+- Precompiled styles are well-organized and scalable
+- Repository is well-documented
+- Git commit history shows Test Driven Development
+- Project demonstrates SOLID / Clean Architecture principles
 
-  Write at least one unit test and one e2e test.
-
-Bonus
-
-    More tests!
-
-    Precompiled styles are well-organized and scalable
-
-    Repository is well-documented
-
-    Git commit history shows Test Driven Development
-
-    Project demonstrates SOLID / Clean Architecture principles
-
-Sample Mockup:
+## Sample Mockup
 
 <img src="mockup.png" alt="mockup" width="500"/>
 
@@ -68,3 +60,15 @@ Install deps `npm i` then `npm start`.
 # Design Notes
 
 _This section contains the design considerations throughout the process of developing the solution._
+
+## On which API to use
+
+Let's use the the Github API--the data seems to be the most rich and will let us do some fancier data loading that's relevant to the audience (hey Joe and Darren!).
+
+## What to do with Github API?
+
+Instead of loading only the followers of a given user, let's first implement a search on the `users` endpoint, then use the user detail view to load followers.
+
+## Where to start?
+
+We could start by building out a search and list UI, however I often find _the data informs the design_. So let's start by writing a test for fetching some users from the Github `users` endpoint.
