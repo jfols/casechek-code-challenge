@@ -225,3 +225,15 @@ Now to add those sweet github stats. Looking good 😎
 ![pretty detail card](pretty-detail-card.png)
 
 Last up is an end to end test.
+
+_commit: 807eb8f pretty detail card_
+
+For a basic end to end test, we'll use the wonderful `puppeteer`.
+
+`npm i -D jest-puppeteer`
+
+Since we're running two different environments we'll need to split our jest config into multiple projects.
+
+![tests](tests.png)
+
+Wonderful!

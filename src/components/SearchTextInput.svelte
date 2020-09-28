@@ -21,6 +21,7 @@
 </script>
 
 <div
+  id="search"
   class="rounded-lg p-3 text-2xl font-bold mx-1 md:mx-0 bg-white flex border-2
     border-gray-400 shadow-xl overflow-hidden"
   class:border-blue-400={focus}>
@@ -29,7 +30,7 @@
   </label>
 
   <input
-    id="search"
+    name="search"
     class="w-full md:w-48 outline-none placeholder-gray-700"
     placeholder="type to search..."
     on:focus={() => {

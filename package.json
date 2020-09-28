@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c --watch",
-    "test": "jest src",
+    "test": "jest --detectOpenHandles",
     "test:watch": "npm run test -- --watch",
     "build:sandbox": "cp -r ./public/* ./dist; npm run build;",
     "deploy:sandbox": "cp -r ./public/* ./dist; npm run build; netlify deploy --dir ./dist;",
@@ -27,7 +27,9 @@
     "cssnano": "^4.1.10",
     "es6-object-assign": "^1.1.0",
     "jest": "^26.4.2",
+    "jest-puppeteer": "^4.4.0",
     "postcss-import": "^12.0.1",
+    "puppeteer": "^5.3.1",
     "ramda": "^0.27.1",
     "rollup": "^2.26.10",
     "rollup-plugin-livereload": "^1.3.0",
@@ -43,24 +45,42 @@
   },
   "dependencies": {},
   "jest": {
-    "transform": {
-      "^.+\\.svelte$": "svelte-jester",
-      "^.+\\.js$": "babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "svelte"
-    ],
-    "testPathIgnorePatterns": [
-      "node_modules"
-    ],
-    "bail": false,
-    "verbose": true,
-    "transformIgnorePatterns": [
-      "node_modules"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-dom/extend-expect"
+    "projects": [
+      {
+        "displayName": "unit tests",
+        "testMatch": [
+          "<rootDir>/src/**/*spec.js"
+        ],
+        "transform": {
+          "^.+\\.svelte$": "svelte-jester",
+          "^.+\\.js$": "babel-jest"
+        },
+        "moduleFileExtensions": [
+          "js",
+          "svelte"
+        ],
+        "testPathIgnorePatterns": [
+          "node_modules"
+        ],
+        "bail": false,
+        "verbose": true,
+        "transformIgnorePatterns": [
+          "node_modules"
+        ],
+        "setupFilesAfterEnv": [
+          "@testing-library/jest-dom/extend-expect"
+        ]
+      },
+      {
+        "displayName": "puppeteer e2e",
+        "testMatch": [
+          "<rootDir>/e2e/*spec.js"
+        ],
+        "preset": "jest-puppeteer",
+        "globalSetup": "<rootDir>/e2e/setup.js",
+        "globalTeardown": "<rootDir>/e2e/teardown.js",
+        "testEnvironment": "<rootDir>/e2e/puppeteer_environment.js"
+      }
     ]
   }
 }

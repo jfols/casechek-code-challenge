@@ -37,17 +37,13 @@ const getFollowers = async (username) => {
       username: username,
     });
 
-    console.log("got followeres: ", results);
-
     results.data = map(
       pick(["login", "avatar_url", "html_url", "type"]),
       results.data
     );
   } catch (e) {
-    console.log("failed to getFollowers", e);
     // todo DRY this up, looks eerily familiar
     if (e.headers["x-ratelimit-limit"] == e.headers["x-ratelimit-used"]) {
-      console.log("set error message");
       results = {
         errorMessage: "rate limit reached, please try again in a moment...",
       };

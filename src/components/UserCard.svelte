@@ -6,7 +6,7 @@
 </script>
 
 <Card>
-  <div class="flex w-96">
+  <div class="flex w-96" data-testid="usercard">
     <div class="h-32 w-32 flex-none">
       <img
         src={user.avatar_url}
