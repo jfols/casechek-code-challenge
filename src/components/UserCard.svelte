@@ -7,10 +7,12 @@
 
 <Card>
   <div class="flex w-96">
-    <img
-      src={user.avatar_url}
-      class="h-32 w-32"
-      alt={user.login + ' profile image'} />
+    <div class="h-32 w-32 flex-none">
+      <img
+        src={user.avatar_url}
+        class="w-32 h-32"
+        alt={user.login + ' profile image'} />
+    </div>
     <div class="p-4 w-full">
       <div class="flex justify-between">
         <div class="text-lg font-bold">{user.login}</div>

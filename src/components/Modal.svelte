@@ -22,7 +22,7 @@
     </div>
     <div
       class="z-20 fixed self-center bg-white rounded-lg max-w-screen
-        max-h-screen overflow-scroll shadow-xl p-4 lg:m-4">
+        max-h-screen-90 overflow-scroll shadow-xl p-4 m-4">
       <slot />
       <div class="flex justify-end my-3">
         <div

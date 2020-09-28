@@ -207,3 +207,9 @@ First let's build a modal component.
 _commit: c858dfd modal_
 
 Now we have to get user followers, let's write another couple of test for the API client, very similar to our first data tests.
+
+_commit: 8395d85 getFollowers_
+
+Excellent, let's make a detail view that display a users followers base on a user prop.
+
+![followers](followers.png)

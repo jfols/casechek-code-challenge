@@ -3,6 +3,7 @@
   import UserCard from "../components/UserCard.svelte";
   import Modal from "../components/Modal.svelte";
   import { usersSearch } from "../api/github.js";
+  import UserFollowersDetail from "../components/UserFollowersDetail.svelte";
 
   let users = [];
   let query;
@@ -58,5 +59,5 @@
   on:close={() => {
     selectedUser = null;
   }}>
-  <div>todo user details</div>
+  <UserFollowersDetail user={selectedUser} />
 </Modal>
