@@ -152,7 +152,7 @@ Nice our test is very failing, let's commit it.
 
 _commit: a5b2e05 failing test for usersSearch expected props_
 
-Now's let make that test pass by _picking_ the data that was want (\*_cough cough_\* transforming data for display).
+Now's let make that test pass by _picking_ the data that was want (transforming data for display).
 
 _commit: 92d4563 pick desired props from usersSearch_
 
@@ -217,3 +217,11 @@ Excellent, let's make a detail view that display a users followers base on a use
 _commit: 5fc8e2b modal with followers_
 
 Followers are looking pretty good, but that card leaves a bit to be desired. Let's grab more details about the user from Github.
+
+_commit: 0234c2f github getUser_
+
+Now to add those sweet github stats. Looking good 😎
+
+![pretty detail card](pretty-detail-card.png)
+
+Last up is an end to end test.

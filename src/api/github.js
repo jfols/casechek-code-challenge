@@ -1,7 +1,12 @@
 import { Octokit } from "@octokit/core";
 import { pick, map } from "ramda";
 
-const octokit = new Octokit();
+// NOTE! This is jfols personal access token, please don't abuse it! This ups the request/hour limit from 60 to 5k
+// in practice this type of credential would never live in git or client side code
+// https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token
+const octokit = new Octokit({
+  auth: "f2ecb7fd556dd03bdec28bad45957d6e7a63664e",
+});
 
 const usersSearch = async (query) => {
   let results;
@@ -32,13 +37,17 @@ const getFollowers = async (username) => {
       username: username,
     });
 
+    console.log("got followeres: ", results);
+
     results.data = map(
       pick(["login", "avatar_url", "html_url", "type"]),
       results.data
     );
   } catch (e) {
+    console.log("failed to getFollowers", e);
     // todo DRY this up, looks eerily familiar
     if (e.headers["x-ratelimit-limit"] == e.headers["x-ratelimit-used"]) {
+      console.log("set error message");
       results = {
         errorMessage: "rate limit reached, please try again in a moment...",
       };

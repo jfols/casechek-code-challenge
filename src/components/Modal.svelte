@@ -9,7 +9,7 @@
 
 {#if open}
   <div
-    class="z-10 fixed flex justify-center inset-0 cursor-auto p-4"
+    class="z-10 fixed flex justify-center inset-0 cursor-auto"
     transition:fade={{ duration: 200, easing: quintOut }}
     on:click|stopPropagation>
     <div class="fixed inset-0">
