@@ -164,6 +164,8 @@ This looks pretty good to start.
 
 ![search input](search-input.png)
 
-Let's expose the value of the text input as a prop and debounce it. We could move the deboucing behavior to a more centralized state management solution, but because the state management in this exercise is very simple, it'll be fine inside the search component (and is arguable an optimization when implemented here). Let's grab `throttle-debouce` for this job.
+Let's expose the value of the text input as a prop and debounce it. We could move the debouncing behavior to a more centralized state management solution, but because the state management in this exercise is very simple, it'll be fine inside the search component (and is arguable an optimization when implemented here). Let's grab `throttle-debouce` for this job.
 
 `npm i -D throttle-debounce`
+
+_commit: ed96b45 SearchTextInput component, install throttle-debounce_

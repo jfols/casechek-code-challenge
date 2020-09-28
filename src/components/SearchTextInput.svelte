@@ -1,9 +1,24 @@
 <script>
   import SearchIcon from "../svg/SearchIcon.svelte";
+  import td from "throttle-debounce";
 
   // tailwind has some great css variant modifiers, but in this case we're adding a fancy label
   // and want a bit more control over everything so we'll keep track of focus ourselves
   let focus = false;
+
+  export let query;
+
+  const debounceQuery = td.debounce(300, false, (value) => {
+    query = value;
+    console.log("set value of query: ", query);
+  });
+
+  let _inputValue;
+
+  // svelte uses this JS label style syntax to make statements reactive
+  $: {
+    debounceQuery(_inputValue);
+  }
 </script>
 
 <div
@@ -21,6 +36,7 @@
     on:focus={() => {
       focus = true;
     }}
+    bind:value={_inputValue}
     on:blur={() => {
       focus = false;
     }} />
