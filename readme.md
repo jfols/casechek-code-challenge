@@ -153,3 +153,7 @@ Nice our test is very failing, let's commit it.
 _commit: a5b2e05 failing test for usersSearch expected props_
 
 Now's let make that test pass by _picking_ the data that was want (\*_cough cough_\* transforming data for display).
+
+_commit: 92d4563 pick desired props from usersSearch_
+
+Now let's start building out a basic UI.

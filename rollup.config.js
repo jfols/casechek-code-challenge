@@ -77,6 +77,7 @@ export default {
     production && terser(),
     serve({
       contentBase: "public",
+      historyApiFallback: true,
       port: 9000,
     }),
     !production && livereload(),

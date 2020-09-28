@@ -1,21 +1,8 @@
 <script>
   import "./main.css";
   import { Route, router } from "tinro";
-
-  import Footer from "./components/Footer.svelte";
   import Home from "./routes/Home.svelte";
-  import NotFound from "./routes/NotFound.svelte";
-
-  import Nav from "./components/Nav.svelte";
-
-  import { exampleStore } from "./stores";
-
-  let exampleStoreValue;
-  exampleStore.subscribe((value) => {
-    exampleStoreValue = value;
-  });
-
-  exampleStore.set(42);
+  import About from "./routes/About.svelte";
 
   router.subscribe((value) => {
     console.log("pageview: ", value, window.location);
@@ -36,6 +23,9 @@
     <div class="w-11/12 sm:w-4/5 md:w-3/5">
       <Route path="/">
         <Home />
+      </Route>
+      <Route path="/about">
+        <About />
       </Route>
     </div>
   </div>
