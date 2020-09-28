@@ -17,6 +17,7 @@
         <a
           class="underline hover:text-blue-400 text-xs"
           href={user.html_url}
+          on:click|stopPropagation
           target="_blank">
           <ExernalIcon />
         </a>

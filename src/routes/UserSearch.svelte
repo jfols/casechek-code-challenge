@@ -1,12 +1,17 @@
 <script>
   import SearchTextInput from "../components/SearchTextInput.svelte";
-
   import UserCard from "../components/UserCard.svelte";
-
+  import Modal from "../components/Modal.svelte";
   import { usersSearch } from "../api/github.js";
 
   let users = [];
   let query;
+
+  let selectedUser = null;
+  let userDetailsModalIsOpen = false;
+  $: {
+    userDetailsModalIsOpen = selectedUser != null;
+  }
 
   const _usersSearch = async (query) => {
     let result = await usersSearch(query);
@@ -38,8 +43,20 @@
 
 <div class="flex flex-wrap">
   {#each users as user}
-    <div class="mb-4 mx-2">
+    <div
+      class="mb-4 mx-2 cursor-pointer"
+      on:click={() => {
+        selectedUser = user;
+      }}>
       <UserCard {user} />
     </div>
   {/each}
 </div>
+
+<Modal
+  bind:open={userDetailsModalIsOpen}
+  on:close={() => {
+    selectedUser = null;
+  }}>
+  <div>todo user details</div>
+</Modal>

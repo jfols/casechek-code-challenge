@@ -195,3 +195,11 @@ _commit: 582073f usersSearch with results in list view_
 Now let's pretty up that card to display the user's profile picture and user type.
 
 ![nice cards](nice-cards.png)
+
+_commit: a0a0773 nice cards, rate limit alert_
+
+Now let's build a detail view for the followers of a user. Let's use a modal.
+
+First let's build a modal component.
+
+![modal](modal.png)
