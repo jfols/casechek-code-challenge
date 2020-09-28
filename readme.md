@@ -169,3 +169,13 @@ Let's expose the value of the text input as a prop and debounce it. We could mov
 `npm i -D throttle-debounce`
 
 _commit: ed96b45 SearchTextInput component, install throttle-debounce_
+
+_commit: 75331db debounce query export in SearchTextInput_
+
+Now let's build a card component for our list.
+
+![simple card](card-simple.png)
+
+With a little test too:
+
+![card test pass](card-test.png)
