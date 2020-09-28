@@ -18,7 +18,7 @@ const removeUnusedCss = purgecss({
   content: ["./public/**/*.html", "./src/**/*.html", "./src/**/*.svelte"],
 
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+  defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
 });
 
 const production = !process.env.ROLLUP_WATCH;
@@ -31,7 +31,7 @@ export default {
     format: "iife",
     name: "app",
     compact: true,
-    file: production ? "dist/bundle.js" : "public/bundle.js"
+    file: production ? "dist/bundle.js" : "public/bundle.js",
   },
   plugins: [
     svelte({
@@ -40,9 +40,9 @@ export default {
       emitCss: true,
       // we'll extract any component CSS out into
       // a separate file — better for performance
-      css: css => {
+      css: (css) => {
         css.write(production ? "dist/bundle.css" : "public/bundle.css");
-      }
+      },
     }),
 
     postcss({
@@ -51,9 +51,9 @@ export default {
         autoprefixer,
         tailwind(),
         production && removeUnusedCss,
-        cssnano()
+        cssnano(),
       ].filter(Boolean),
-      extract: production ? "dist/bundle.css" : "public/bundle.css"
+      extract: production ? "dist/bundle.css" : "public/bundle.css",
     }),
 
     // If you have external dependencies installed from
@@ -63,12 +63,13 @@ export default {
     // https://github.com/rollup/rollup-plugin-commonjs
     resolve({
       browser: true,
-      dedupe: importee =>
-        importee === "svelte" || importee.startsWith("svelte/")
+      dedupe: (importee) =>
+        importee === "svelte" || importee.startsWith("svelte/"),
     }),
     commonjs(),
     buble({
-      transforms: { forOf: false }
+      transforms: { forOf: false, asyncAwait: false },
+      objectAssign: require("es6-object-assign").polyfill,
     }),
 
     // If we're building for production (npm run build
@@ -76,11 +77,11 @@ export default {
     production && terser(),
     serve({
       contentBase: "public",
-      port: 9000
+      port: 9000,
     }),
-    !production && livereload()
+    !production && livereload(),
   ],
   watch: {
-    clearScreen: true
-  }
+    clearScreen: true,
+  },
 };

@@ -61,6 +61,8 @@ Install deps `npm i` then `npm start`.
 
 _This section contains the design considerations throughout the process of developing the solution._
 
+_commit: b014a3c degit jfols/svelte-start, document project requirements_
+
 ## On which API to use
 
 Let's use the the Github API--the data seems to be the most rich and will let us do some fancier data loading that's relevant to the audience (hey Joe and Darren!).
@@ -72,3 +74,40 @@ Instead of loading only the followers of a given user, let's first implement a s
 ## Where to start?
 
 We could start by building out a search and list UI, however I often find _the data informs the design_. So let's start by writing a test for fetching some users from the Github `users` endpoint.
+
+_commit: 727c50d chose gitlab api, decided what to do with data, starting point thoughts_
+
+_commit: e08f476 failing `usersSearch returns data` test_
+
+## Let's get some data
+
+The [linked docs](https://developer.github.com/v3/users/followers/) might be out of date (maybe deprecated soon?) so we'll use the new docs over here https://docs.github.com/en/free-pro-team@latest/rest/reference/users#list-followers-of-a-user
+
+![outdated docs](github-api-notice.png)
+
+The new docs look great.
+
+![new docs](github-docs-new.png)
+
+There's a slick API client [@octocat/core](https://github.com/octokit/core.js#readme) that we can use--the browser based fetch API is easy to use but let's use the supported api client to make our life a bit easier.
+
+`npm i -D @octokit/core`
+
+The Search API has just what we're looking for https://docs.github.com/en/free-pro-team@latest/rest/reference/search#search-users
+
+Buble doesn't can't transform async/await, we'll turn off that transform for now. Evergreen browsers are better anyway, right?
+
+![](buble-async-await-transform-error.png)
+
+Looks like `@octokit/core` uses a few features `buble` doesn't want to transform out of the box, let's modify our rollup config to polyfill object spreading.
+
+![](buble-object-assign-error.png)
+
+This likely has some impact on compatiblity with older browsers, but the purposes of this coding challenge that's not a requirements so let's move forward with this new `buble` config;
+
+```
+buble({
+  transforms: { forOf: false, asyncAwait: false },
+  objectAssign: require("es6-object-assign").polyfill,
+}),
+```
