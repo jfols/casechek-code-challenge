@@ -1,7 +1,7 @@
 <script>
   import SearchTextInput from "../components/SearchTextInput.svelte";
 
-  import Card from "../components/Card.svelte";
+  import UserCard from "../components/UserCard.svelte";
 
   import { usersSearch } from "../api/github.js";
 
@@ -12,7 +12,6 @@
     let result = await usersSearch(query);
     try {
       users = result.data.items;
-      console.log(users);
     } catch (e) {
       // this is definitely a shortcut! more time on this and error handling could be dramatically improved
       if (result.errorMessage) {
@@ -30,13 +29,17 @@
   }
 </script>
 
-<div class="text-3xl mt-10">Github user followers Casechek code challenge</div>
+<div class="text-3xl mt-10 text-center">
+  Github user followers Casechek code challenge
+</div>
 <div class="flex justify-center my-10">
   <SearchTextInput bind:query />
 </div>
 
-{#each users as user}
-  <div class="mb-4">
-    <Card>{user.login}</Card>
-  </div>
-{/each}
+<div class="flex flex-wrap">
+  {#each users as user}
+    <div class="mb-4 mx-2">
+      <UserCard {user} />
+    </div>
+  {/each}
+</div>

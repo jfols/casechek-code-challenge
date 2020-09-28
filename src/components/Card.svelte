@@ -1,3 +1,3 @@
-<div class="shadow rounded-lg p-4 bg-white">
+<div class="shadow rounded-lg bg-white overflow-hidden">
   <slot />
 </div>

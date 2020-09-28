@@ -186,4 +186,12 @@ Let's wire up the search input to the API client and display the results inside 
 
 ![users list](users-list.png)
 
-Turns out there a rate limit on this endpoint we're using, so some quick hacks to throw a reasonable alert at the user were added. If this were a real app, we'd register it with Github and probably have a much higher rate limit.
+Turns out there a rate limit on this endpoint we're using...add some quick hacks to throw a reasonable alert at the user were added. If this were a real app, we'd register it with Github and probably have a much higher rate limit.
+
+_commit: 582073f usersSearch with results in list view_
+
+![rate limit](rate-limit.png)
+
+Now let's pretty up that card to display the user's profile picture and user type.
+
+![nice cards](nice-cards.png)

@@ -10,17 +10,13 @@ const usersSearch = async (query) => {
       q: query,
     });
 
-    console.log("results:", results);
-
     results.data.items = map(
       pick(["login", "avatar_url", "html_url", "type"]),
       results.data.items
     );
   } catch (e) {
     // oh man! had to add this quick hack to soften the blow for rate limit, this is not the right way to do this but in the interest of time...
-    console.error(e);
     if (e.headers["x-ratelimit-limit"] == e.headers["x-ratelimit-used"]) {
-      console.log("RATE LIMIT REACHED");
       results = {
         errorMessage: "rate limit reached, please try again in a moment...",
       };
