@@ -156,4 +156,14 @@ Now's let make that test pass by _picking_ the data that was want (\*_cough coug
 
 _commit: 92d4563 pick desired props from usersSearch_
 
-Now let's start building out a basic UI.
+_commit: e81049e remove boilerplate ui_
+
+Now let's start building out a basic UI. First we need a text input with some nice change handlers exposed for triggering data loads.
+
+This looks pretty good to start.
+
+![search input](search-input.png)
+
+Let's expose the value of the text input as a prop and debounce it. We could move the deboucing behavior to a more centralized state management solution, but because the state management in this exercise is very simple, it'll be fine inside the search component (and is arguable an optimization when implemented here). Let's grab `throttle-debouce` for this job.
+
+`npm i -D throttle-debounce`

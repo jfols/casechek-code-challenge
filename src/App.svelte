@@ -1,7 +1,7 @@
 <script>
   import "./main.css";
   import { Route, router } from "tinro";
-  import Home from "./routes/Home.svelte";
+  import UserSearch from "./routes/UserSearch.svelte";
   import About from "./routes/About.svelte";
 
   router.subscribe((value) => {
@@ -22,7 +22,7 @@
   <div class="flex justify-center">
     <div class="w-11/12 sm:w-4/5 md:w-3/5">
       <Route path="/">
-        <Home />
+        <UserSearch />
       </Route>
       <Route path="/about">
         <About />
