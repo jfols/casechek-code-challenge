@@ -111,3 +111,41 @@ buble({
   objectAssign: require("es6-object-assign").polyfill,
 }),
 ```
+
+_commit: 6d8673d octokit github API client, rollup remove async/await transform, rollup polyfill Object.assign, github users search_
+
+Excellent, we have some data, let's take a look at it.
+
+```
+{
+  login: 'j',
+  id: 589410,
+  node_id: 'MDQ6VXNlcjU4OTQxMA==',
+  avatar_url: 'https://avatars2.githubusercontent.com/u/589410?v=4',
+  gravatar_id: '',
+  url: 'https://api.github.com/users/j',
+  html_url: 'https://github.com/j',
+  followers_url: 'https://api.github.com/users/j/followers',
+  following_url: 'https://api.github.com/users/j/following{/other_user}',
+  gists_url: 'https://api.github.com/users/j/gists{/gist_id}',
+  starred_url: 'https://api.github.com/users/j/starred{/owner}{/repo}',
+  subscriptions_url: 'https://api.github.com/users/j/subscriptions',
+  organizations_url: 'https://api.github.com/users/j/orgs',
+  repos_url: 'https://api.github.com/users/j/repos',
+  events_url: 'https://api.github.com/users/j/events{/privacy}',
+  received_events_url: 'https://api.github.com/users/j/received_events',
+  type: 'User',
+  site_admin: false,
+  score: 1
+}
+```
+
+Hey this guy stole my username...grrr. Okay I'm over it, this is great, looks _almost_ like the docs, there are definitely some extra fields in here. Since the Github API will inevitably change let's write a test that checks for the data we're going to use in our UI. I like to say _the ground moves under your feet_ in software, whether is APIs or browser updates or a million other possibilities. This is one of those tests that saves you when something "just breaks" out of the blue one day.
+
+Let's pick a set of properties for the initial UI and pluck them from our data. We'll pluck them so that we don't accidentally rely on some data that we haven't tested. Let's use these: `login`, `avatar_url`, `html_url`, `type`. We could stick with pure JS for this type of thing, but `ramda` is just too tasty to resist.
+
+`npm i -D ramda`
+
+Nice our test is very failing, let's commit it.
+
+![failing test](failing-test-usersSearch-returns-expected-props.png)
