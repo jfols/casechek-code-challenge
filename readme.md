@@ -213,3 +213,7 @@ _commit: 8395d85 getFollowers_
 Excellent, let's make a detail view that display a users followers base on a user prop.
 
 ![followers](followers.png)
+
+_commit: 5fc8e2b modal with followers_
+
+Followers are looking pretty good, but that card leaves a bit to be desired. Let's grab more details about the user from Github.

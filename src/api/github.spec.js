@@ -1,4 +1,4 @@
-import { usersSearch, getFollowers } from "./github.js";
+import { usersSearch, getFollowers, getUser } from "./github.js";
 import { keys } from "ramda";
 
 test("usersSearch returns data", async () => {
@@ -23,4 +23,32 @@ test("getFollowers returns expected properties", async () => {
   users.data.forEach((user) => {
     expect(keys(user)).toEqual(["login", "avatar_url", "html_url", "type"]);
   });
+});
+
+test("getUser returns data", async () => {
+  const users = await getUser("jfols");
+  expect(users.data).not.toBeNull();
+});
+
+test("getUser returns expected properties", async () => {
+  const user = await getUser("jfols");
+  expect(keys(user.data)).toEqual([
+    "login",
+    "id",
+    "avatar_url",
+    "html_url",
+    "type",
+    "name",
+    "company",
+    "blog",
+    "location",
+    "bio",
+    "twitter_username",
+    "public_repos",
+    "public_gists",
+    "followers",
+    "following",
+    "created_at",
+    "updated_at",
+  ]);
 });
