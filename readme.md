@@ -35,6 +35,10 @@ Quote Garden - https://pprathameshmore.github.io/QuoteGarden/
 
 <img src="mockup.png" alt="mockup" width="500"/>
 
+# Try it out, it's deployed!
+
+https://5f7212800684ae0c27945f0f--casecheck-code-challenge.netlify.app/
+
 # Setup
 
 ## Dependencies
@@ -237,3 +241,5 @@ Since we're running two different environments we'll need to split our jest conf
 ![tests](tests.png)
 
 Wonderful!
+
+_commit: 3365a89 e2e tests_

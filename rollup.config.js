@@ -27,7 +27,7 @@ console.log("is prod:", production);
 export default {
   input: "src/main.js",
   output: {
-    sourcemap: true,
+    sourcemap: !production,
     format: "iife",
     name: "app",
     compact: true,
@@ -75,11 +75,12 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
-    serve({
-      contentBase: "public",
-      historyApiFallback: true,
-      port: 9000,
-    }),
+    !production &&
+      serve({
+        contentBase: "public",
+        historyApiFallback: true,
+        port: 9000,
+      }),
     !production && livereload(),
   ],
   watch: {
