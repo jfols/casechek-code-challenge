@@ -25,4 +25,26 @@ const usersSearch = async (query) => {
   return results;
 };
 
-export { usersSearch };
+const getFollowers = async (username) => {
+  let results;
+  try {
+    results = await octokit.request("GET /users/" + username + "/followers", {
+      username: username,
+    });
+
+    results.data = map(
+      pick(["login", "avatar_url", "html_url", "type"]),
+      results.data
+    );
+  } catch (e) {
+    // todo DRY this up, looks eerily familiar
+    if (e.headers["x-ratelimit-limit"] == e.headers["x-ratelimit-used"]) {
+      results = {
+        errorMessage: "rate limit reached, please try again in a moment...",
+      };
+    }
+  }
+  return results;
+};
+
+export { usersSearch, getFollowers };

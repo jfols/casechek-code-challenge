@@ -203,3 +203,7 @@ Now let's build a detail view for the followers of a user. Let's use a modal.
 First let's build a modal component.
 
 ![modal](modal.png)
+
+_commit: c858dfd modal_
+
+Now we have to get user followers, let's write another couple of test for the API client, very similar to our first data tests.
