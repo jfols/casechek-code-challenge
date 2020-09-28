@@ -6,11 +6,10 @@
   // and want a bit more control over everything so we'll keep track of focus ourselves
   let focus = false;
 
-  export let query;
+  export let query = null;
 
-  const debounceQuery = td.debounce(300, false, (value) => {
+  const debounceQuery = td.debounce(150, false, (value) => {
     query = value;
-    console.log("set value of query: ", query);
   });
 
   let _inputValue;

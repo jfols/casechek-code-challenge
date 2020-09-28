@@ -179,3 +179,11 @@ Now let's build a card component for our list.
 With a little test too:
 
 ![card test pass](card-test.png)
+
+_commit: c51145d remove boilerplate Button, add simple Card component with slot render test_
+
+Let's wire up the search input to the API client and display the results inside our card.
+
+![users list](users-list.png)
+
+Turns out there a rate limit on this endpoint we're using, so some quick hacks to throw a reasonable alert at the user were added. If this were a real app, we'd register it with Github and probably have a much higher rate limit.
