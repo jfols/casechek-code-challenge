@@ -142,10 +142,14 @@ Excellent, we have some data, let's take a look at it.
 
 Hey this guy stole my username...grrr. Okay I'm over it, this is great, looks _almost_ like the docs, there are definitely some extra fields in here. Since the Github API will inevitably change let's write a test that checks for the data we're going to use in our UI. I like to say _the ground moves under your feet_ in software, whether is APIs or browser updates or a million other possibilities. This is one of those tests that saves you when something "just breaks" out of the blue one day.
 
-Let's pick a set of properties for the initial UI and pluck them from our data. We'll pluck them so that we don't accidentally rely on some data that we haven't tested. Let's use these: `login`, `avatar_url`, `html_url`, `type`. We could stick with pure JS for this type of thing, but `ramda` is just too tasty to resist.
+Let's pick a set of properties for the initial UI. We'll pick only the props we need so that we don't accidentally rely on some data that we haven't tested. Let's use these: `login`, `avatar_url`, `html_url`, `type`. We could stick with pure JS for this type of thing, but `ramda` is just too tasty to resist.
 
 `npm i -D ramda`
 
 Nice our test is very failing, let's commit it.
 
 ![failing test](failing-test-usersSearch-returns-expected-props.png)
+
+_commit: a5b2e05 failing test for usersSearch expected props_
+
+Now's let make that test pass by _picking_ the data that was want (\*_cough cough_\* transforming data for display).
